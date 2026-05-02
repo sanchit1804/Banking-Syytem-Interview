@@ -1,35 +1,25 @@
-class ParkingLot {
-    private boolean[] spots;
-    private int size;
-
-    ParkingLot(int size){
-        this.size = size;
-        spots = new boolean[size];
-    }
-
-    void park(){
-        for(int i = 0; i < size; i++){
-            if(!spots[i]){
-                spots[i] = true;
-                System.out.println("Parked at Spot: " + i);
-                return;
-            }
+class Main{
+    static class BankAccount{
+    private double balance=0;
+    
+    void deposit(int amount){
+        if(amount>0){
+            balance+=amount;
+            System.out.println("Amount Deposited:" + amount);
         }
-        System.out.println("Parking Full");
+        else System.out.println("Amount Should be greater than 0");
     }
     
-    void leave(int x){
-        if(x < 0 || x >= size){
-            System.out.println("Invalid slot");
-            return;
+    void withdraw(int amount){
+        if(balance>=amount){
+            balance-=amount;
+            System.out.println("Amount Withdrawn:" + amount);
         }
-
-        if(!spots[x]){
-            System.out.println("Slot already empty");
-        } else {
-            spots[x] = false;
-            System.out.println("Slot " + x + " is now free");
-        }
+        else System.out.println("Amount > Balance");
+    }
+    
+    void getBalance(){
+        System.out.println(balance);
     }
 }
 
